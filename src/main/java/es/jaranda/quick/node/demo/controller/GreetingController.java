@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(REQUEST_MAPPING_URL)
-public class GreetController {
+public class GreetingController {
 
-    private static final Logger LOG = Logger.getLogger(GreetController.class);
+    private static final Logger LOG = Logger.getLogger(GreetingController.class);
     
     @Autowired
     private I18nHelper i18n;
@@ -35,7 +35,7 @@ public class GreetController {
             @RequestParam(value=MESSAGE_PARAM, required=true) String message
         ) {
         
-        LOG.info(i18n.getMessage(RECIVED_MESSAGE, session.getId(), message));
+        LOG.info(i18n.getMessage(RECIVED_GREETING, session.getId(), message));
         
         DemoResponseDto response = new DemoResponseDto();
         response.setStatus(true);
