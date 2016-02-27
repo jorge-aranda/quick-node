@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(REQUEST_MAPPING_URL)
-public class GreetingController {
+public class DemoController {
 
-    private static final Logger LOG = Logger.getLogger(GreetingController.class);
+    private static final Logger LOG = Logger.getLogger(DemoController.class);
     
     @Autowired
     private I18nHelper i18n;
