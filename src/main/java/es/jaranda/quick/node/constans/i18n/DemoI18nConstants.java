@@ -6,7 +6,7 @@ package es.jaranda.quick.node.constans.i18n;
 public class DemoI18nConstants {
     
     public static final String RECIVED_GREETING = 
-            "integration.greeting.recived_greeting";
+            GreetingBatchI18nConstants.RECIVED_GREETING;
     
     public static final String MESSAGE_PARAM = "message";
     
