@@ -36,28 +36,18 @@ public class GreetingController {
     @Autowired
     private JobLauncher jobLauncher;
     
-    // TODO this is the future 'way' to implement Jobs?
     @Autowired
     @Qualifier(GreetingJobContext.GREETING_JOB)
     private Job greetingJob;
     
     @RequestMapping(method=RequestMethod.POST)
-    public @ResponseBody boolean greet() {
-        boolean success;
+    public @ResponseBody ExitStatus greet() throws 
+            JobExecutionAlreadyRunningException, 
+            JobRestartException, 
+            JobInstanceAlreadyCompleteException, 
+            JobParametersInvalidException {
         
-        try
-        {
-            JobExecution jobExecution = 
-                    jobLauncher.run(greetingJob, new JobParameters());
-            success = jobExecution.getExitStatus().equals(ExitStatus.COMPLETED);
-            
-        } catch (JobExecutionAlreadyRunningException | 
-                JobRestartException | JobInstanceAlreadyCompleteException | 
-                JobParametersInvalidException ex) {
-            LOG.error("", ex);
-            success = false;
-        }
-        
-        return success;
+        return jobLauncher.run(greetingJob, new JobParameters())
+                .getExitStatus();
     }
 }
