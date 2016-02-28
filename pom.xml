@@ -20,7 +20,16 @@
     </parent>
 
     <properties>
+        <!-- JAVA VERSION -->
         <java.version>1.8</java.version>
+        
+        <!-- APACHE COMMONS -->
+        <apache-commons.lang.version>3.4</apache-commons.lang.version>
+        <apache-commons.io.version>2.4</apache-commons.io.version>
+        <apache-commons.math.version>3.6</apache-commons.math.version>
+        <apache-commons.bean-utils.version>1.9.2
+        </apache-commons.bean-utils.version>
+        <!-- APACHE COMMONS -->
     </properties>
 
     <dependencies>
@@ -51,11 +60,51 @@
             <groupId>org.springframework.boot</groupId> 
             <artifactId>spring-boot-starter-batch</artifactId> 
         </dependency>
+        
+        <!-- APACHE COMMONS -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+        <!-- APACHE COMMONS -->
     </dependencies>
     
     <dependencyManagement>
         <dependencies>
-
+            <!-- APACHE COMMONS -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${apache-commons.lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${apache-commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${apache-commons.math.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${apache-commons.bean-utils.version}</version>
+            </dependency>
+            <!-- APACHE COMMONS -->
         </dependencies>
     </dependencyManagement>
 
