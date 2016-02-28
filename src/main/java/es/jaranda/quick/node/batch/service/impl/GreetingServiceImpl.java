@@ -26,5 +26,4 @@ public class GreetingServiceImpl implements GreetingService {
     public void greet(String message, String fromName) {
         LOG.info(i18n.getMessage(RECIVED_GREETING, fromName, message));
     }
-    
 }
