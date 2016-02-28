@@ -2,6 +2,7 @@
 package es.jaranda.quick.node.api.controller;
 
 import static es.jaranda.quick.node.api.constants.UrlMappingConstants.*;
+import es.jaranda.quick.node.api.dto.GreetingRequestDto;
 import static es.jaranda.quick.utils.QuickDateUtils.*;
 import es.jaranda.quick.node.batch.config.BatchContext;
 import es.jaranda.quick.node.batch.job.GreetingJobContext;
@@ -19,6 +20,7 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,8 +38,12 @@ public class GreetingController {
     @Qualifier(GreetingJobContext.GREETING_JOB)
     private Job greetingJob;
     
+    // TODO pending include data validation (as message cannot has a size greather than 250 characters or RequestBody cannot be null)
     @RequestMapping(method=RequestMethod.POST)
-    public @ResponseBody ExitStatus greet(HttpSession session) throws 
+    public @ResponseBody ExitStatus greet(
+            HttpSession session,
+            @RequestBody GreetingRequestDto request
+    ) throws 
             JobExecutionAlreadyRunningException, 
             JobRestartException, 
             JobInstanceAlreadyCompleteException, 
@@ -46,13 +52,14 @@ public class GreetingController {
         JobParametersBuilder jpBuilder = new JobParametersBuilder();
 
         jpBuilder.addLong(BatchContext.TIMESTAMP_PARAMETER, timestamp());
-        // FIXME use json parameter
-        jpBuilder.addString(GreetingJobContext.MESSAGE_PARAMETER, "test");
+        jpBuilder.addString(
+                GreetingJobContext.MESSAGE_PARAMETER, 
+                request.getMessage()
+        );
         jpBuilder.addString(
                 GreetingJobContext.FROM_NAME_PARAMETER, session.getId()
         );
-        
-        
+
         return jobLauncher.run(greetingJob, jpBuilder.toJobParameters())
                 .getExitStatus();
     }
