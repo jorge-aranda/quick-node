@@ -2,7 +2,7 @@
 package es.jaranda.quick.node.batch.service.impl;
 
 import es.jaranda.quick.node.batch.service.GreetingService;
-import static es.jaranda.quick.node.constans.i18n.GreetingBatchI18nConstants.*;
+import static es.jaranda.quick.node.constants.i18n.GreetingBatchI18nConstants.*;
 import es.jaranda.quick.node.util.I18nHelper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

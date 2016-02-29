@@ -1,5 +1,5 @@
 
-package es.jaranda.quick.node.constans.i18n;
+package es.jaranda.quick.node.constants.i18n;
 
 public class GreetingBatchI18nConstants {
     
