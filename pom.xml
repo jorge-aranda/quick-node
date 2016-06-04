@@ -7,7 +7,7 @@
 
     <groupId>es.jaranda.quick</groupId>
     <artifactId>quick-node-root</artifactId>
-    <version>0.0.1.alpha1</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>Quick Node - Root project</name>
     <description>QuickNode is an autonomous system to do
                  integration process behind a API REST layer
